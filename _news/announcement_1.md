@@ -1,8 +1,8 @@
 ---
 layout: post
-date: 2026-02-20 15:59:00-0400
+date: 2026-02-21 15:59:00-0400
 inline: true
 related_posts: false
 ---
 
-MaskAdapt has been accepted to CVPR 2026!
+MaskAdapt has been accepted to **CVPR 2026**. More details coming soon.
