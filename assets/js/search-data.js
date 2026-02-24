@@ -384,8 +384,8 @@ ninja.data = [{
           description: "",
           section: "Books",handler: () => {
               window.location.href = "/books/the_godfather/";
-            },},{id: "news-",
-          title: '',
+            },},{id: "news-maskadapt-has-been-accepted-to-cvpr-2026",
+          title: 'MaskAdapt has been accepted to CVPR 2026!',
           description: "",
           section: "News",},{id: "projects-project-1",
           title: 'project 1',
