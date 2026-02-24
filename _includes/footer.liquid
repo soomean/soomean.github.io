@@ -1,4 +1,5 @@
 {% capture footer_contents %}
+{% comment %}
   &copy; Copyright {{ site.time | date: '%Y' }}
   {{ site.first_name }}
   {{ site.middle_name }}
@@ -9,6 +10,7 @@
   {% if site.last_updated %}
     Last updated: {{ 'now' | date: '%B %d, %Y' }}.
   {% endif %}
+{% endcomment %}
 {% endcapture %}
 
 {% if site.footer_fixed %}
