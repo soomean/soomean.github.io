@@ -24,7 +24,7 @@ latest_posts:
   limit: 3 # leave blank to include all the blog posts
 ---
 
-I am a PhD candidate at the [Lifelike Avatar & Agent Laboratory](https://lava.kaist.ac.kr/), KAIST, advised by Prof. [Sung-Hee Lee](https://lava.kaist.ac.kr/?page_id=41). I received my M.S. from the same laboratory.
+I am a Ph.D. candidate at the [Lifelike Avatar & Agent Laboratory](https://lava.kaist.ac.kr/), KAIST, advised by Prof. [Sung-Hee Lee](https://lava.kaist.ac.kr/?page_id=41). I received my M.S. from the same laboratory.
 
 My research interest lies in generative modeling for human-like motion, exploring both kinematic and dynamic approaches. Currently, I am working on humanoid control with a focus on planning and adapting motions for various tasks within physics-based environments. My goal is to contribute to advancements and applications in computer animation, robotics, and AR/VR.
 
