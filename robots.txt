@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://soomean.github.io/sitemap.xml
+Sitemap: https://soominpark.xyz/sitemap.xml
