@@ -29,17 +29,26 @@ $(document).ready(function() {
 
     });
 
-    var options = {
+    var defaultOptions = {
 			slidesToScroll: 1,
-			slidesToShow: 3,
+			slidesToShow: 1,
 			loop: true,
 			infinite: true,
 			autoplay: false,
 			autoplaySpeed: 3000,
     }
 
-		// Initialize all div with carousel class
-    var carousels = bulmaCarousel.attach('.carousel', options);
+    var compOptions = {
+			slidesToScroll: 1,
+			slidesToShow: 3,
+			loop: true,
+			infinite: true,
+			autoplay: false,
+    }
+
+		// Initialize carousels separately
+    bulmaCarousel.attach('#mi-carousel', defaultOptions);
+    var carousels = bulmaCarousel.attach('#results-carousel', compOptions);
 
     // Loop on each carousel initialized
     for(var i = 0; i < carousels.length; i++) {

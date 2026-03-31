@@ -10,6 +10,8 @@
 
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
         rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap"
+        rel="stylesheet">
 
   <link rel="stylesheet" href="./static/css/bulma.min.css">
   <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
@@ -36,12 +38,12 @@
         <div class="column has-text-centered">
           <h1 class="title publication-title" style="font-size: 2.75rem;"><span style="font-weight: 800;">MaskAdapt:</span> Learning Flexible Motion Adaptation via Mask-Invariant Prior for Physics-Based Characters</h1>
           <div class="is-size-5 publication-authors" style="column-gap: 1.5rem;">
-            <span class="author-block" style="margin-right: 1rem;">
-              <a href="https://soominpark.xyz">Soomin Park</a></span>
-            <span class="author-block" style="margin-right: 1rem;">
-              Eunseong Lee</span>
-            <span class="author-block" style="margin-right: 1rem;">
-              <a href="https://kwangaji.github.io/">Kwang Bin Lee</a></span>
+            <span class="author-block">
+              <a href="https://soominpark.xyz">Soomin Park</a>,</span>
+            <span class="author-block">
+              Eunseong Lee,</span>
+            <span class="author-block">
+              <a href="https://kwangaji.github.io/">Kwang Bin Lee</a>,</span>
             <span class="author-block">
               <a href="https://lava.kaist.ac.kr/?page_id=41">Sung-Hee Lee</a>
             </span>
@@ -67,6 +69,26 @@
                   <span>Paper</span>
                 </a>
               </span>
+              <!-- arXiv Link. -->
+              <span class="link-block">
+                <a href="#"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <span class="link-block">
+                <a href="https://youtu.be/XT34Lnk6Bn8"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span>
               <!-- Code Link. -->
               <span class="link-block">
                 <a href="https://github.com/soomean/MaskAdapt"
@@ -74,12 +96,22 @@
                   <span class="icon">
                       <i class="fab fa-github"></i>
                   </span>
-                  <span>Code</span>
+                  <span>Code (coming soon)</span>
                 </a>
               </span>
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top: 1rem; padding-bottom: 0;">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <img src="./static/images/teaser.jpg" alt="MaskAdapt Teaser" width="100%">
       </div>
     </div>
   </div>
@@ -106,6 +138,390 @@
       </div>
     </div>
     <!--/ Abstract. -->
+
+    <!-- Paper video. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Video</h2>
+        <div class="publication-video">
+          <iframe src="https://www.youtube.com/embed/XT34Lnk6Bn8?rel=0&amp;showinfo=0"
+                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+    <!--/ Paper video. -->
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Method</h2>
+      </div>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <div class="content has-text-justified">
+          <p>
+            Our framework follows a <b>two-stage residual learning</b> paradigm, where the base controller first learns base actions and the residual controller learns residual actions to the base actions from the frozen base policy.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Key Challenges -->
+    <div class="columns is-centered" style="margin-bottom: 1.5rem;">
+      <div class="column is-four-fifths">
+        <div class="notification" style="background-color: #f5f5f5; border-left: 4px solid #888;">
+          <p class="has-text-weight-bold" style="margin-bottom: 0.5rem;">Key Challenges</p>
+          <div class="content has-text-justified">
+            <ul style="margin-top: 0;">
+              <li>Existing methods typically train the base policy without accounting for the substantial state-distribution shifts that arise during the subsequent adaptation phase.</li>
+              <li>They either restrict adaptation to fixed body regions or lack semantic control, e.g., text-conditioned guidance.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <div class="content has-text-justified">
+          <p>
+            To tackle these challenges, we introduce <b>MaskAdapt</b>, a framework that learns a robust motion prior that enables flexible residual adaptation.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stage 1 -->
+    <div class="columns is-centered" style="margin-bottom: 1.5rem;">
+      <div class="column is-four-fifths">
+        <div class="notification" style="background-color: #eef6ff; border-left: 4px solid #3273dc;">
+          <p class="has-text-weight-bold" style="margin-bottom: 0.5rem;">Stage 1: Learning a Mask-Invariant Motion Prior</p>
+          <div class="content has-text-justified">
+            <p>
+              The base policy is trained with stochastic body-part masking and regularized to maintain consistent actions across masking conditions. This encourages a robust motion prior that remains stable under missing observations, anticipating later adaptation in those regions.
+            </p>
+          </div>
+        </div>
+        <div style="text-align: center; margin-top: 1rem;">
+          <img src="./static/images/framework_base.jpg" width="90%">
+        </div>
+      </div>
+    </div>
+
+    <!-- Stage 2 -->
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <div class="notification" style="background-color: #eef6ff; border-left: 4px solid #3273dc;">
+          <p class="has-text-weight-bold" style="margin-bottom: 0.5rem;">Stage 2: Learning Flexible Motion Adaptation</p>
+          <div class="content has-text-justified">
+            <p>
+              The residual policy facilitates flexible motion adaptation across two representative tasks: <i><b>Dynamic Motion Composition</b></i>, where selected body parts are flexibly modified, and <i><b>Text-Driven Partial Motion Tracking</b></i>, where designated regions follow semantically guided kinematic targets provided by a pre-trained text-conditioned autoregressive motion diffusion model.
+            </p>
+          </div>
+        </div>
+        <div style="text-align: center; margin-top: 1rem;">
+          <img src="./static/images/framework_residual_all.png" width="90%">
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Mask-Invariant Motion Prior</h2>
+      </div>
+    </div>
+    <h3 class="title is-4 has-text-centered" style="margin-top: 1rem;">Effect of Mask-Invariant Loss</h3>
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <p class="has-text-centered">
+          Here, we compare base policies trained with and without the mask-invariant loss.
+        </p>
+      </div>
+    </div>
+    <div id="mi-carousel" class="carousel results-carousel">
+      <div class="item" style="font-size: initial; padding: 1rem;">
+        <table style="width: 100%; border-collapse: collapse; border: 2px solid #dbdbdb;">
+          <thead>
+            <tr>
+              <th style="text-align: center; padding: 0.5rem; font-size: 1.0rem; border: 2px solid #dbdbdb;">Without Mask-Invariant Loss</th>
+              <th style="text-align: center; padding: 0.5rem; font-size: 1.0rem; border: 2px solid #dbdbdb;">With Mask-Invariant Loss</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="padding: 0.5rem; border: 2px solid #dbdbdb;">
+                <video autoplay controls muted loop playsinline width="100%">
+                  <source src="./static/videos/without_mi_arms.mp4" type="video/mp4">
+                </video>
+              </td>
+              <td style="padding: 0.5rem; border: 2px solid #dbdbdb;">
+                <video autoplay controls muted loop playsinline width="100%">
+                  <source src="./static/videos/with_mi_arms.mp4" type="video/mp4">
+                </video>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding: 0.5rem; border: 2px solid #dbdbdb;">
+                <video autoplay controls muted loop playsinline width="100%">
+                  <source src="./static/videos/without_mi_legs.mp4" type="video/mp4">
+                </video>
+              </td>
+              <td style="padding: 0.5rem; border: 2px solid #dbdbdb;">
+                <video autoplay controls muted loop playsinline width="100%">
+                  <source src="./static/videos/with_mi_legs.mp4" type="video/mp4">
+                </video>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <p style="text-align: center; margin-top: 1rem;">
+          Without the MI loss, the policy collapses into highly repetitive, looping motions.<br>
+          With the MI loss, however, the policy preserves motion diversity even under severe occlusion (e.g., arms or legs).
+        </p>
+      </div>
+      <div class="item" style="font-size: initial; padding: 1rem;">
+        <table style="width: 100%; border-collapse: collapse; border: 2px solid #dbdbdb;">
+          <thead>
+            <tr>
+              <th style="text-align: center; padding: 0.5rem; font-size: 1.0rem; border: 2px solid #dbdbdb;">Without Mask-Invariant Loss</th>
+              <th style="text-align: center; padding: 0.5rem; font-size: 1.0rem; border: 2px solid #dbdbdb;">With Mask-Invariant Loss</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="padding: 0.5rem; border: 2px solid #dbdbdb;">
+                <video autoplay controls muted loop playsinline width="100%">
+                  <source src="./static/videos/unitree_without_mi_upper.mp4" type="video/mp4">
+                </video>
+              </td>
+              <td style="padding: 0.5rem; border: 2px solid #dbdbdb;">
+                <video autoplay controls muted loop playsinline width="100%">
+                  <source src="./static/videos/unitree_with_mi_upper.mp4" type="video/mp4">
+                </video>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding: 0.5rem; border: 2px solid #dbdbdb;">
+                <video autoplay controls muted loop playsinline width="100%">
+                  <source src="./static/videos/unitree_without_mi_lower.mp4" type="video/mp4">
+                </video>
+              </td>
+              <td style="padding: 0.5rem; border: 2px solid #dbdbdb;">
+                <video autoplay controls muted loop playsinline width="100%">
+                  <source src="./static/videos/unitree_with_mi_lower.mp4" type="video/mp4">
+                </video>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <p style="text-align: center; margin-top: 1rem;">
+          We observe the similar effect when deployed on the Unitree G1 humanoid robot,
+          confirming that our approach learns a robust motion prior even when major body parts (e.g., the upper/lower body) are occluded.
+        </p>
+      </div>
+    </div>
+
+    <h3 class="title is-4 has-text-centered" style="margin-top: 2rem;">Comparison with Unmasked Baseline</h3>
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <p class="has-text-centered">
+          The MI loss effectively prevents collapse under masking and enables the policy to retain dataset-level diversity comparable to the unmasked baseline (AMP), qualifying it as a robust motion prior.
+        </p>
+      </div>
+    </div>
+    <div class="columns is-centered" style="margin-top: 1rem;">
+      <div class="column is-half has-text-centered">
+        <video autoplay controls muted loop playsinline width="100%">
+          <source src="./static/videos/ours_random.mp4" type="video/mp4">
+        </video>
+        <p>Ours</p>
+      </div>
+      <div class="column is-half has-text-centered">
+        <video autoplay controls muted loop playsinline width="100%">
+          <source src="./static/videos/amp.mp4" type="video/mp4">
+        </video>
+        <p>AMP</p>
+      </div>
+    </div>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container">
+      <h2 class="title is-3 has-text-centered">Flexible Motion Adaptation</h2>
+      <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <p class="has-text-centered">
+          Here, we showcase the qualitative results of the residual adaptation stage, demonstrating the flexible motion adaptation capabilities across two representative tasks: (i) dynamic motion composition and (ii) text-driven partial motion tracking.
+        </p>
+      </div>
+    </div>
+      <h3 class="title is-4 has-text-centered" style="margin-top: 1.5rem;">Dynamic Motion Composition</h3>
+      <div class="columns is-centered">
+        <div class="column is-one-third has-text-centered">
+          <video autoplay controls muted loop playsinline width="100%">
+            <source src="./static/videos/comp_a.mp4" type="video/mp4">
+          </video>
+          <p>Jump + Alternating Kick</p>
+        </div>
+        <div class="column is-one-third has-text-centered">
+          <video autoplay controls muted loop playsinline width="100%">
+            <source src="./static/videos/comp_b.mp4" type="video/mp4">
+          </video>
+          <p>Locomotion + Rotate Arms</p>
+        </div>
+        <div class="column is-one-third has-text-centered">
+          <video autoplay controls muted loop playsinline width="100%">
+            <source src="./static/videos/comp_c.mp4" type="video/mp4">
+          </video>
+          <p>Aim + Sneak</p>
+        </div>
+      </div>
+
+      <h3 class="title is-4 has-text-centered" style="margin-top: 2rem;">Text-Driven Partial Motion Tracking</h3>
+      <div class="columns is-centered">
+        <div class="column is-one-third has-text-centered">
+          <video autoplay controls muted loop playsinline width="100%">
+            <source src="./static/videos/track_a.mp4" type="video/mp4">
+          </video>
+          <p><span style="font-family: 'JetBrains Mono', monospace;">"Raise right arm"</span></p>
+        </div>
+        <div class="column is-one-third has-text-centered">
+          <video autoplay controls muted loop playsinline width="100%">
+            <source src="./static/videos/track_b.mp4" type="video/mp4">
+          </video>
+          <p><span style="font-family: 'JetBrains Mono', monospace;">"Flap like a bird"</span></p>
+        </div>
+        <div class="column is-one-third has-text-centered">
+          <video autoplay controls muted loop playsinline width="100%">
+            <source src="./static/videos/track_c.mp4" type="video/mp4">
+          </video>
+          <p><span style="font-family: 'JetBrains Mono', monospace;">"Cross arms"</span></p>
+        </div>
+      </div>
+  </div>
+</section>
+
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container">
+      <h2 class="title is-3 has-text-centered">Goal-Driven and Complex Scenarios</h2>
+      <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <p class="has-text-centered">
+          Here, we showcase  wide range of goal-driven tasks (a-c) and complex scenarios (d-e) through dynamic motion composition.
+        </p>
+      </div>
+      </div>
+
+      <div class="columns is-centered">
+        <div class="column is-one-third has-text-centered">
+          <video autoplay controls muted loop playsinline width="100%">
+            <source src="./static/videos/goal_location.mp4" type="video/mp4">
+          </video>
+          <p>(a) Target Location Task</p>
+        </div>
+        <div class="column is-one-third has-text-centered">
+          <video autoplay controls muted loop playsinline width="100%">
+            <source src="./static/videos/goal_strike.mp4" type="video/mp4">
+          </video>
+          <p>(b) Strike Task</p>
+        </div>
+        <div class="column is-one-third has-text-centered">
+          <video autoplay controls muted loop playsinline width="100%">
+            <source src="./static/videos/goal_heading.mp4" type="video/mp4">
+          </video>
+          <p>(c) Heading Task</p>
+        </div>
+      </div>
+
+      <div class="columns is-centered">
+        <div class="column is-half has-text-centered">
+          <video autoplay controls muted loop playsinline width="100%">
+            <source src="./static/videos/multi_comp.mp4" type="video/mp4">
+          </video>
+          <p>(d) Multi-Motion Composition</p>
+        </div>
+        <div class="column is-half has-text-centered">
+          <video autoplay controls muted loop playsinline width="100%">
+            <source src="./static/videos/humanoid_robot.mp4" type="video/mp4">
+          </video>
+          <p>(e) Adaptation for Real Humanoid Robot (Unitree G1)</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+      <h2 class="title is-3 has-text-centered">Comparison with SOTA</h2>
+      <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <p class="has-text-centered">
+          We compare our method against Composite Motion Learning (CML) on both motion composition and partial tracking tasks.
+        </p>
+      </div>
+    </div>
+      <h3 class="title is-4 has-text-centered" style="margin-top: 1rem;">Motion Composition</h3>
+      <div class="columns is-centered">
+        <div class="column is-one-third has-text-centered">
+          <video autoplay controls muted loop playsinline width="100%">
+            <source src="./static/videos/comparison_comp_a.mp4" type="video/mp4">
+          </video>
+          <p>Jump + Alternating Kick</p>
+        </div>
+        <div class="column is-one-third has-text-centered">
+          <video autoplay controls muted loop playsinline width="100%">
+            <source src="./static/videos/comparison_comp_b.mp4" type="video/mp4">
+          </video>
+          <p>Locomotion + Rotate Arms</p>
+        </div>
+        <div class="column is-one-third has-text-centered">
+          <video autoplay controls muted loop playsinline width="100%">
+            <source src="./static/videos/comparison_comp_c.mp4" type="video/mp4">
+          </video>
+          <p>Aim + Sneak</p>
+        </div>
+      </div>
+
+      <h3 class="title is-4 has-text-centered" style="margin-top: 1rem;">Partial Tracking</h3>
+      <div class="columns is-centered">
+        <div class="column is-one-third has-text-centered">
+          <video autoplay controls muted loop playsinline width="100%">
+            <source src="./static/videos/comparison_track_a.mp4" type="video/mp4">
+          </video>
+          <p><span style="font-family: 'JetBrains Mono', monospace;">"Dribble"</span></p>
+        </div>
+        <div class="column is-one-third has-text-centered">
+          <video autoplay controls muted loop playsinline width="100%">
+            <source src="./static/videos/comparison_track_b.mp4" type="video/mp4">
+          </video>
+          <p><span style="font-family: 'JetBrains Mono', monospace;">"Raise arms"</span></p>
+        </div>
+        <div class="column is-one-third has-text-centered">
+          <video autoplay controls muted loop playsinline width="100%">
+            <source src="./static/videos/comparison_track_c.mp4" type="video/mp4">
+          </video>
+          <p><span style="font-family: 'JetBrains Mono', monospace;">"Wave hands"</span></p>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 

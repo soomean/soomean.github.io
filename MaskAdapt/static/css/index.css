@@ -120,7 +120,16 @@ body {
   border: 1px solid #bbb;
   border-radius: 10px;
   padding: 0;
-  font-size: 0;
+}
+
+.results-carousel .item p {
+  font-size: 1rem;
+  text-align: center;
+  padding: 0.5rem;
+}
+
+.results-carousel .item video {
+  display: block;
 }
 
 .results-carousel video {
