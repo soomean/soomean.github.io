@@ -4,6 +4,11 @@
 
 @use "variables" as v;
 
+// Hide navbar completely
+#navbar {
+  display: none !important;
+}
+
 .navbar {
   box-shadow: none;
   border-bottom: 1px solid var(--global-divider-color);

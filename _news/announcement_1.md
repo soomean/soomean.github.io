@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-MaskAdapt has been accepted to **CVPR 2026**. More details coming soon.
+MaskAdapt has been accepted to **CVPR 2026**.
