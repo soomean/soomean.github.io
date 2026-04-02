@@ -9,14 +9,7 @@ ninja.data = [{
     handler: () => {
       window.location.href = "/";
     },
-  },{id: "nav-publications",
-          title: "publications",
-          description: "",
-          section: "Navigation",
-          handler: () => {
-            window.location.href = "/publications/";
-          },
-        },{id: "post-a-post-with-plotly-js",
+  },{id: "post-a-post-with-plotly-js",
         
           title: "a post with plotly.js",
         
@@ -384,8 +377,8 @@ ninja.data = [{
           description: "",
           section: "Books",handler: () => {
               window.location.href = "/books/the_godfather/";
-            },},{id: "news-maskadapt-has-been-accepted-to-cvpr-2026-more-details-coming-soon",
-          title: 'MaskAdapt has been accepted to CVPR 2026. More details coming soon.',
+            },},{id: "news-maskadapt-has-been-accepted-to-cvpr-2026",
+          title: 'MaskAdapt has been accepted to CVPR 2026.',
           description: "",
           section: "News",},{id: "projects-project-1",
           title: 'project 1',
