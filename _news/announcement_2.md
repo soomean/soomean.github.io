@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-[MaskAdapt](/MaskAdapt/) has been selected as a CVPR Highlight paper.
+[MaskAdapt](/MaskAdapt/) has been selected as a Highlight paper at CVPR 2026.
