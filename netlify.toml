@@ -1,3 +1,4 @@
 [build]
-  command = "echo 'Skipping build'"
+  # Only the built gh-pages branch is deployable; refuse to publish Jekyll sources.
+  command = "test ! -f _config.yml"
   publish = "."
