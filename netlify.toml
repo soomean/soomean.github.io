@@ -1,4 +1,15 @@
 [build]
   # The site is built by GitHub Actions (deploy.yml) into the gh-pages branch; Netlify only publishes that output.
-  command = "rm -rf dist && git clone --depth 1 --branch gh-pages https://github.com/soomean/soomean.github.io.git dist && rm -rf dist/.git"
+  # On main, wait (up to 5 min) for deploy.yml to publish this commit to gh-pages, otherwise Netlify would ship the previous build.
+  command = """
+    rm -rf dist && git clone -q --depth 1 --branch gh-pages https://github.com/soomean/soomean.github.io.git dist && \
+    if [ -f _config.yml ] && [ -n "$COMMIT_REF" ]; then \
+      for i in $(seq 1 30); do \
+        git -C dist log -1 --format=%s | grep -q "$COMMIT_REF" && break; \
+        echo "waiting for gh-pages build of $COMMIT_REF ($i/30)"; sleep 10; \
+        git -C dist fetch -q --depth 1 origin gh-pages && git -C dist reset -q --hard FETCH_HEAD; \
+      done; \
+    fi && \
+    git -C dist log -1 --format='publishing %s' && rm -rf dist/.git
+  """
   publish = "dist"
