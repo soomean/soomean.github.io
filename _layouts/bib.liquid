@@ -256,6 +256,9 @@
       {% if entry.website %}
         <a href="{{ entry.website }}" class="btn btn-sm z-depth-0" role="button">Project</a>
       {% endif %}
+      {% if entry.links_pending %}
+        <a class="btn btn-sm z-depth-0 invisible" aria-hidden="true">&nbsp;</a>
+      {% endif %}
     </div>
     {% if site.enable_publication_badges %}
       {% assign entry_has_altmetric_badge = false %}
