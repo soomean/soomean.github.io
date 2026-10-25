@@ -1,4 +1,4 @@
 [build]
-  # Only the built gh-pages branch is deployable; refuse to publish Jekyll sources.
-  command = "test ! -f _config.yml"
-  publish = "."
+  # The site is built by GitHub Actions (deploy.yml) into the gh-pages branch; Netlify only publishes that output.
+  command = "rm -rf dist && git clone --depth 1 --branch gh-pages https://github.com/soomean/soomean.github.io.git dist && rm -rf dist/.git"
+  publish = "dist"
